@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProTask Analytics Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>ProTask Analytics Dashboard</h1>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <input type="text" id="task-input" placeholder="Enter task...">
+        <select id="priority-input">
+            <option value="#ff4757">High</option>
+            <option value="#ffa502">Medium</option>
+            <option value="#2ed573">Low</option>
+        </select>
+        <button class="primary" onclick="addTask()">Add Task</button>
+        <button class="primary" onclick="openCalendar()">
+            <i class="fas fa-calendar-plus"></i> Schedule
+        </button>
+        <button class="primary" onclick="toggleDarkMode()">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="primary" onclick="shareSnapshot()">
+            <i class="fas fa-share"></i>
+        </button>
+    </div>
+    <div class="container">
+        <div class="column" id="todo">
+            <h2>To Do</h2>
+        </div>
+        <div class="column" id="in-progress">
+            <h2>In Progress</h2>
+        </div>
+        <div class="column" id="done">
+            <h2>Completed</h2>
+        </div>
+    </div>
+    <div class="stats-section">
+        <div class="metric-grid">
+            <div id="current-day-date">
+                <p id="current-day"></p>
+                <small id="current-date"></small>
+            </div>
+            <div class="metric-card" id="completed-tasks">
+                <h3>Completed</h3>
+                <p>0</p>
+            </div>
+            <div class="metric-card" id="avg-time">
+                <h3>Total time</h3>
+                <p>0m</p>
+            </div>
+        </div>
+        <canvas id="analyticsChart"></canvas>
+    </div>
+    <div class="overlay" onclick="closeCalendar()"></div>
+    <div class="calendar-modal">
+        <h2>Schedule Task</h2>
+        <input type="datetime-local" id="task-datetime">
+        <input type="text" id="task-for-date" placeholder="Enter task...">
+        <button class="primary" onclick="addScheduledTask()">Schedule</button>
+    </div>
+    <div id="snapshot-stamp"></div>
+    <!-- Link to your external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
